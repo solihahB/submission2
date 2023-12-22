@@ -1,52 +1,43 @@
 # Versi API yang didefinisikan
 apiVersion: apps/v1
-# jenis objek kubernetes "Deployment"
+# jenis objek kubernetes "Deploymenr"
 kind: Deployment
 #metadata untuk deployment
 metadata:
   # nama deployment
   name: karsajobs-backend
-# spesifikasi Deployment
+# spesifikasi untuk deployment
 spec:
   # jumlah replika pod yang akan dibuat
   replicas: 1
-  #selektor untuk memilih Pod
+  #selektor untuk memilih pod
   selector: 
-    # pod yang dipilih harus punya label sesuai ketentuan (app: backend)
+    # pod yang dipilih harus sesuai ketentuan (app: backend)
     matchLabels:
       app: backend
-  # template untuk membuat pod
+  
   template:
-    # label Pod
     metadata:
       labels:
         app: backend
-    # spesifikasi Pod    
     spec:
-      # spesifikasi container pada Pod
       containers:
-      # nama image untuk membuat container
       - name: karsajobs
         image: solihahbinti/karsajobs:latest
         imagePullPolicy: Always
-        # Port yang digunakan 
         ports:
-        # port untuk akses container
         - containerPort: 8080
         env:
-        # nama environtment 
         - name: APP_PORT
           value: '8080'
         - name: MONGO_HOST
           value: mongo-service
-        - name: MONGO_USER
-          # value env var berasal dari secret (mongo-credentials) dengan key MONGO_ROOT_USERNAME  
+        - name: MONGO_USERS
           valueFrom:
             secretKeyRef:
               name: mongo-credentials
               key: MONGO_ROOT_USERNAME
         - name: MONGO_PASS
-          # value env var berasal dari secret (mongo-credentials) dengan key MONGO_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
               name: mongo-credentials

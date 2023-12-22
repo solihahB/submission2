@@ -1,13 +1,21 @@
+# Versi API yang didefinisikan
 apiVersion: v1
+# jenis objek kubernetes Service
 kind: Service
+# metadata untuk service
 metadata:
+  # nama Service
   name: karsajobs-services
   labels:
-    app: backend  
+    app: backend
+# spesifikasi Service  
 spec:
+  # tipe service yang akan dibuat
   type: NodePort
+  # port Service yang diekspose
   ports:
   - port: 8080
+  # selector untuk memilih pod yang akan dilayani service
   selector:
     app: backend
   
