@@ -15,5 +15,5 @@ spec:
   - port: 27017
     protocol: TCP
   # selector untuk memilih pod yang akan dilayani service
-    selector:
+  selector:
     app: database

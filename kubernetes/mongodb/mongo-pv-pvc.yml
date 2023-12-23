@@ -15,7 +15,7 @@ spec:
   storageClassName: manual
   # kapasitas penyimpanan
   capacity:
-    storage: 20Gi
+    storage: 1Gi
   # mode akses
   accessModes:
     - ReadWriteOnce
@@ -34,7 +34,7 @@ metadata:
 # spesifikasi PersistentVolumeClaim
 spec:
   # nama StorageClass yang digunakan
-  StorageClassName: manual
+  storageClassName: manual
   # mode akses
   accessModes:
     - ReadWriteOnce
